@@ -11,11 +11,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const sequelize = new Sequelize({
-    database: process.env.DBNAME,
-    username: process.env.DBUSER,
-    password: process.env.PASSWORD,
-    host: process.env.HOST,
-    port: Number(process.env.PORT),
+    database: process.env.DBNAME || 'rest-api',
+    username: process.env.DBUSER || 'root',
+    password: process.env.PASSWORD || '',
+    host: process.env.HOST || 'localhost',
+    port: Number(process.env.PORT) || 3306,
     dialect: 'mysql'
 });
 

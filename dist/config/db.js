@@ -11,11 +11,11 @@ const activity_1 = __importDefault(require("../models/activity"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const sequelize = new sequelize_1.Sequelize({
-    database: process.env.DBNAME,
-    username: process.env.DBUSER,
-    password: process.env.PASSWORD,
-    host: process.env.HOST,
-    port: Number(process.env.PORT),
+    database: process.env.DBNAME || 'rest-api',
+    username: process.env.DBUSER || 'root',
+    password: process.env.PASSWORD || '',
+    host: process.env.HOST || 'localhost',
+    port: Number(process.env.PORT) || 3306,
     dialect: 'mysql'
 });
 const db = {};

@@ -6,10 +6,15 @@ import authRoute from './routes/authRoute'
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import db from './config/db';
+import cors from 'cors'
+import dotenv from 'dotenv';
+
+dotenv.config()
+
 
 const app = express();
+const port = Number(process.env.PORT) || 5000
 
-const PORT = process.env.PORT || 5000
 
 db.sequelize.authenticate()
     .then(() => {
@@ -26,6 +31,7 @@ db.sequelize.authenticate()
 
 
 app.use(express.json());
+app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
@@ -36,6 +42,6 @@ app.use('/role', roleRoute)
 
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });

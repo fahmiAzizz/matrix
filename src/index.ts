@@ -8,8 +8,8 @@ import cookieParser from 'cookie-parser';
 import db from './config/db';
 
 const app = express();
-const port = 3010;
 
+const PORT = process.env.PORT || 5000
 
 db.sequelize.authenticate()
     .then(() => {
@@ -36,6 +36,6 @@ app.use('/role', roleRoute)
 
 
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
